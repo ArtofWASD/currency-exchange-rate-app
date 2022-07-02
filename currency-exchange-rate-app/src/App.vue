@@ -5,8 +5,11 @@
 </script>
 
 <template>
-  <h1 class="flex text-3xl font-bold underline">
+<div class="bg-green-600 h-100 w-100">
+    <h1 class="flex text-3xl font-bold underline ">
     Hello world!
   </h1>
   <h1>hahahah</h1>
+</div>
+
 </template>
