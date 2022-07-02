@@ -6,6 +6,6 @@
 - Vue-Axios
 ## Установка на локальную машину:
 ### Скопировать репозиторий
-- git clone 
+- git clone https://github.com/ArtofWASD/currency-exchange-rate-app.git
 ### Установить зависимости
 - npm i
