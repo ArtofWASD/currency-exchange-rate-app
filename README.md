@@ -9,3 +9,5 @@
 - git clone https://github.com/ArtofWASD/currency-exchange-rate-app.git
 ### Установить зависимости
 - npm i
+### Запустить приложение
+- npm run dev
