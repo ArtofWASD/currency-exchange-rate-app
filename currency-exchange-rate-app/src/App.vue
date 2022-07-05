@@ -7,27 +7,31 @@
       <inputField />
     </div>
     <div>
-      {{ data }}
+      {{ courses.data }}
     </div>
   </main>
 </template>
 
 <script>
 import inputField from "./components/inputFiled.vue";
-import { ref } from "vue";
 import axios from "axios";
 export default {
+  data() {
+    return {
+      courses: {},
+    };
+  },
   components: {
     inputField,
   },
-  setup() {
-    const data = ref(null);
+  mounted() {
     axios
       .get(
-        "https://currate.ru/api/?get=rates&pairs=USDRUB,EURRUB&key=a65e139fc72359d4597691114962a4de"
+        "api/?get=rates&pairs=USDRUB,EURRUB&key=a65e139fc72359d4597691114962a4de",
       )
-      .then((data) => (result.data = data));
-    return { data };
+      .then((response) => {
+        this.courses = response.data;
+      });
   },
 };
 </script>
