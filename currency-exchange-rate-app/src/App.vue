@@ -6,9 +6,6 @@
     <div class="flex gap-5 mt-10">
       <inputField />
     </div>
-    <div>
-      {{ courses.data }}
-    </div>
   </main>
 </template>
 
@@ -19,6 +16,7 @@ export default {
   data() {
     return {
       courses: {},
+      currencyPair: "",
     };
   },
   components: {
@@ -26,9 +24,7 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        "api/?get=rates&pairs=USDRUB,EURRUB&key=a65e139fc72359d4597691114962a4de",
-      )
+      .get("/api/?get=rates&pairs=USDRUB,EURRUB&key=a65e139fc72359d4597691114962a4de")
       .then((response) => {
         this.courses = response.data;
       });
