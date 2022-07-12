@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="text" :value="modelValue" @input="updateInput" class="border-2 rounded p-1">
+        <input type="text" :value="modelValue" @input="updateInput" class="rounded py-1 px-5">
     </div>
 </template>
 <script>
