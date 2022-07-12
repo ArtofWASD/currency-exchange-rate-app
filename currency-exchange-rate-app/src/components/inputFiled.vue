@@ -6,18 +6,20 @@
           Выберите валюту из <br />
           которой хотите сделать обмен
         </p>
-        <selectInput/>
+        <selectInput />
       </section>
       <section>
         <p class="text-lg text-left py-2 text-white">
           Выберите валюту в <br />
           которую хотите сделать обмен
         </p>
-        <selectInput/>
+        <selectInput />
       </section>
       <section>
-        <p class="py-2 text-lg text-left text-white">Укажите количество валюты</p>
-        <myInput v-model="input" />
+        <p class="py-2 text-lg text-left text-white">
+          Укажите количество валюты
+        </p>
+        <myInput v-model="currency.input" type="text" />
       </section>
     </div>
   </div>
@@ -32,8 +34,10 @@ export default {
   },
   data() {
     return {
-      input: "",
-      currencyPair: [],
+      currency: {
+        input: "",
+        currencyPair: [],
+      },
     };
   },
 };

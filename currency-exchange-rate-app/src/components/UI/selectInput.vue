@@ -1,8 +1,8 @@
 <template>
   <div id="v-model-select">
-    <select v-model="selected" class="w-60" v-bind:value="selected">
+    <select v-model="selected" class="w-60" @change="returnValue">
       <option disabled value="" >Выберите Валюту</option>
-      <option v-for="item in convertArray">{{ item }}</option>
+      <option v-for="item in convertArray" >{{ item }}</option>
     </select>
   </div>
 </template>
@@ -11,14 +11,12 @@ import axios from "axios";
 export default {
   name: "select-input",
   props: {
-    messageObj: {
-      type: String,
-      default: () => {},
-    },
+    modelValue:{
+      type: String
+    }
   },
   data() {
     return {
-      selected: "",
       coursesPair: [],
     };
   },
@@ -30,8 +28,8 @@ export default {
     });
   },
   methods: {
-    returnValue() {
-      this.$emit("updateValue", this.selected);
+    returnValue(e) {
+      this.$emit("update:modelValue", e.target.value);
     },
   },
   computed:{

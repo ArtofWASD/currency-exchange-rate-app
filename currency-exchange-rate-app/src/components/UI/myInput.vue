@@ -1,26 +1,17 @@
-<template lang="">
+<template>
     <div>
-        <input type="text" :value="modelValue" @input="updateInput">
+        <input type="text" :value="modelValue" @input="updateInput" class="border-2 rounded p-1">
     </div>
 </template>
 <script>
 export default {
     props:{
-        modelValue:[Number]
-    },
-
-    data(){
-        return{
-            amount:''
-        }
+        modelValue:[String, Number]
     },
     methods:{
         updateInput(event){
-            this.$emit('update:ModelValue', event.target.value)
+            this.$emit('update:modelValue', event.target.value)
         }
     }
 }
 </script>
-<style lang="">
-    
-</style>
