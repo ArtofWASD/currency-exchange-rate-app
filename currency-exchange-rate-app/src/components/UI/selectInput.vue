@@ -6,7 +6,7 @@
       @change="returnValue"
     >
       <option disabled value="">Выберите Валюту</option>
-      <option v-for="item in convertArray" :key="Date.now()">{{ item }}</option>
+      <option v-for="item in convertArray">{{ item }}</option>
     </select>
   </div>
 </template>

@@ -11,7 +11,7 @@
 
 <script>
 import inputField from "./components/inputFiled.vue";
-import axios from "axios";
+
 export default {
   data() {
     return {
@@ -22,13 +22,7 @@ export default {
   components: {
     inputField,
   },
-  mounted() {
-    axios
-      .get("/api/?get=rates&pairs=USDRUB,EURRUB&key=a65e139fc72359d4597691114962a4de")
-      .then((response) => {
-        this.courses = response.data;
-      });
-  },
+  
 };
 </script>
 <style lang=""></style>
