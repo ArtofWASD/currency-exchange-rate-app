@@ -1,16 +1,16 @@
 <template lang="">
   <div class="input_field border-2 rounded-xl px-10 py-20">
-    <div class="grid grid-cols-3 items-end gap-5">
+    <div class="grid grid-cols-3 items-end justify-between gap-5">
       <section>
         <p class="text-lg text-left py-2 text-white">
-          Выберите валюту из <br />
+          Валюта из 
           которой хотите сделать обмен
         </p>
         <selectInput v-model="currency.currencyIn"/>
       </section>
       <section>
         <p class="text-lg text-left py-2 text-white">
-          Выберите валюту в <br />
+          Валюта в
           которую хотите сделать обмен
         </p>
         <selectInput v-model="currency.currencyOut"/>
