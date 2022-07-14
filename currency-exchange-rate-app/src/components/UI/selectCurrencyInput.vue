@@ -2,7 +2,7 @@
   <div id="v-model-select">
     <select
       v-model="selected"
-      class="w-60 p-1 rounded mt-2"
+      class="w-80 p-1 rounded mt-2"
       @change="returnValue"
     >
       <option disabled value="">Выберите Валюту</option>

@@ -1,26 +1,26 @@
 <template lang="">
   <div class="input_field border-2 rounded-xl px-10 py-20">
     <div class="grid grid-cols-3 items-end justify-between gap-5">
-      <section>
+      <section class="flex flex-col items-center">
         <p class="text-lg text-left py-2 text-white">
           Валюта из которой хотите сделать обмен
         </p>
         <selectInput v-model="currencyIn" @change="getCurrency" />
       </section>
-      <section>
+      <section class="flex flex-col items-center">
         <p class="text-lg text-left py-2 text-white">
           Валюта в которую хотите сделать обмен
         </p>
         <selectInput v-model="currencyOut" @change="getCurrency" />
       </section>
-      <section>
+      <section class="flex flex-col items-center">
         <p class="py-2 text-lg text-left text-white">
           Укажите количество валюты
         </p>
         <myInput v-model="input" type="text" />
       </section>
     </div>
-    <div class="flex pt-4 gap-3 justify-center" v-if="course !== undefined">
+    <div class="flex pt-4 gap-3 justify-center" v-if="course !== undefined && input !== null">
         <p class="py-2 text-2xl text-left text-white">Вы получите: </p>
         <div class="py-2 text-2xl text-left text-white flex gap-2">
           <div>
