@@ -1,12 +1,13 @@
 <template lang="">
-  <div class="input_field border-2 rounded-xl px-10 py-20">
-    <div class="grid grid-cols-3 items-end justify-between gap-5">
+  <div class="input_field border-2 rounded-xl px-10 py-20 grid justify-center">
+    <div class="grid lg:grid-cols-4 sm:grid-cols-1 sm:justify-items-center justify-between items-center gap-5">
       <section class="flex flex-col items-center">
         <p class="text-lg text-left py-2 text-white">
           Валюта из которой хотите сделать обмен
         </p>
         <selectInput v-model="currencyIn" @change="getCurrency" />
       </section>
+      <switchButton @click="changeCurrencyPair"></switchButton>
       <section class="flex flex-col items-center">
         <p class="text-lg text-left py-2 text-white">
           Валюта в которую хотите сделать обмен
@@ -20,30 +21,33 @@
         <myInput v-model="input" type="text" />
       </section>
     </div>
-    <div class="flex pt-4 gap-3 justify-center" v-if="course !== undefined && input !== null">
-        <p class="py-2 text-2xl text-left text-white">Вы получите: </p>
-        <div class="py-2 text-2xl text-left text-white flex gap-2">
-          <div>
-            {{mathValue(Number(Object.values(course.data)), input)}}
-          </div>
-          <div>
-            {{currencyOut}}
-          </div>
-          
+    <div
+      class="flex pt-4 gap-3 justify-center"
+      v-if="course !== undefined && input !== null"
+    >
+      <p class="py-2 text-2xl text-left text-white">Вы получите:</p>
+      <div class="py-2 text-2xl text-left text-white flex gap-2">
+        <div>
+          {{ mathValue(Number(Object.values(course.data)), input) }}
         </div>
-        
+        <div>
+          {{ currencyOut }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import selectInput from "./UI/selectCurrencyInput.vue";
 import myInput from "./UI/amountInput.vue";
+import switchButton from "./UI/switchButton.vue";
 import axios from "axios";
 
 export default {
   components: {
     selectInput,
     myInput,
+    switchButton,
   },
   data() {
     return {
@@ -68,12 +72,15 @@ export default {
           });
       }
     },
-    mathValue(rate, amount){
+    mathValue(rate, amount) {
       if (rate && amount) {
-        const result = rate*amount
+        const result = rate * amount;
 
-        return result.toFixed(2)
+        return result.toFixed(2);
       }
+    },
+    changeCurrencyPair(){
+      
     }
   },
 };
