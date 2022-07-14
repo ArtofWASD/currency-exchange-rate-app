@@ -36,8 +36,8 @@
   </div>
 </template>
 <script>
-import selectInput from "./UI/selectInput.vue";
-import myInput from "./UI/myInput.vue";
+import selectInput from "./UI/selectCurrencyInput.vue";
+import myInput from "./UI/amountInput.vue";
 import axios from "axios";
 
 export default {
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      input: "",
+      input: null,
       currencyIn: "",
       currencyOut: "",
       course: undefined,
@@ -70,7 +70,9 @@ export default {
     },
     mathValue(rate, amount){
       if (rate && amount) {
-        return rate * amount
+        const result = rate*amount
+
+        return result.toFixed(2)
       }
     }
   },
