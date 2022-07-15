@@ -1,12 +1,13 @@
 <template>
   <div id="v-model-select">
     <select v-model="selected" class="p-1 rounded" @change="returnValue">
-      <option value="КГИ">Выберите Валюту</option>
+      <option disabled value="">Выберите Валюту</option>
       <option v-for="item in convertArray">{{ item }}</option>
     </select>
   </div>
 </template>
 <script>
+import { ref } from 'vue'
 import axios from "axios";
 export default {
   name: "select-input",
@@ -14,6 +15,10 @@ export default {
     modelValue: {
       type: String,
     },
+  },
+  setup(){
+    const selected = ref(0)
+    return {selected}
   },
   data() {
     return {

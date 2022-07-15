@@ -19,11 +19,6 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-      title: this.title,
-    };
-  },
   methods: {
     returnSelect(e){
         this.$emit("update:modelValue", e.target.value);
