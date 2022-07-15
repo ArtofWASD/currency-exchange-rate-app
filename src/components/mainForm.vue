@@ -44,7 +44,7 @@ export default {
   methods: {
     getCurrency() {
       if (this.currencyIn !== "" && this.currencyOut !== "") {
-        axios.get("/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de").then((response) => {
+        axios.get("https://currate.ru/api/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de").then((response) => {
           this.course = response.data;
         });
       }
