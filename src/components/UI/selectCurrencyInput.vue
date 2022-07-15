@@ -1,11 +1,7 @@
 <template>
   <div id="v-model-select">
-    <select
-      v-model="selected"
-      class=" p-1 rounded mt-2"
-      @change="returnValue"
-    >
-      <option disabled value="">Выберите Валюту</option>
+    <select v-model="selected" class="p-1 rounded" @change="returnValue">
+      <option value="КГИ">Выберите Валюту</option>
       <option v-for="item in convertArray">{{ item }}</option>
     </select>
   </div>
@@ -25,16 +21,15 @@ export default {
     };
   },
   mounted() {
-    axios
-      .get("api/?get=currency_list&key=a65e139fc72359d4597691114962a4de")
-      .then((response) => {
-        this.coursesPair = response.data.data.map((item) => {
-          return item.slice(0, 3);
-        });
+    axios.get("api/?get=currency_list&key=a65e139fc72359d4597691114962a4de").then((response) => {
+      this.coursesPair = response.data.data.map((item) => {
+        return item.slice(0, 3);
       });
+    });
   },
   methods: {
     returnValue(e) {
+      console.log(e.target.value);
       this.$emit("update:modelValue", e.target.value);
     },
   },
