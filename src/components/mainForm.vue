@@ -1,9 +1,9 @@
 <template>
   <div class="input_field border-2 rounded-xl px-10 py-20 grid justify-center">
     <div class="grid lg:grid-cols-3 sm:grid-cols-1 sm:justify-items-center justify-between items-center gap-5">
-      <selectComponent title="Валюта 1" v-model="currencyIn" @change="getCurrency" />
+      <selectComponent title="Валюта 1" selected="RUB" v-model="currencyIn" @change="getCurrency" />
       <!-- <switchButton @click="changeCurrencyPair"></switchButton> -->
-      <selectComponent title="Валюта 2" v-model="currencyOut" @change="getCurrency" />
+      <selectComponent title="Валюта 2" Selected="" v-model="currencyOut" @change="getCurrency" />
       <amountInput v-model="input" type="text" />
     </div>
     <div class="flex pt-8 gap-3 justify-center border-top" v-if="course !== undefined && input !== null">
@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+
 import selectInput from "./UI/selectCurrencyInput.vue";
 import amountInput from "./UI/amountInput.vue";
 import switchButton from "./UI/switchButton.vue";

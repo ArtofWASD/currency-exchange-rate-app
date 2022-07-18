@@ -1,13 +1,12 @@
 <template>
   <div id="v-model-select">
-    <select v-model="selected" class="p-1 rounded" @change="returnValue">
+    <select v-model="selected" class="p-1 rounded" @change="returnValue" :value="selected">
       <option disabled value="">Выберите Валюту</option>
-      <option v-for="item in convertArray">{{ item }}</option>
+      <option v-for="item in coursesPair">{{ item }}</option>
     </select>
   </div>
 </template>
 <script>
-import { ref } from 'vue'
 import axios from "axios";
 export default {
   name: "select-input",
@@ -16,32 +15,25 @@ export default {
       type: String,
     },
   },
-  setup(){
-    const selected = ref(0)
-    return {selected}
-  },
   data() {
     return {
       coursesPair: [],
+      selected: "RUB",
     };
   },
   mounted() {
     axios.get("/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de").then((response) => {
-      this.coursesPair = response.data.data.map((item) => {
+      const arr = response.data.data.map((item) => {
         return item.slice(0, 3);
+      });
+      this.coursesPair = arr.filter((item, index) => {
+        return arr.indexOf(item) === index;
       });
     });
   },
   methods: {
     returnValue(e) {
       this.$emit("update:modelValue", e.target.value);
-    },
-  },
-  computed: {
-    convertArray() {
-      return this.coursesPair.filter((item, index) => {
-        return this.coursesPair.indexOf(item) === index;
-      });
     },
   },
 };
