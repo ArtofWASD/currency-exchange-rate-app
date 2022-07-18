@@ -44,11 +44,13 @@ export default {
   methods: {
     getCurrency() {
       if (this.currencyIn !== "" && this.currencyOut !== "") {
-        axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
-        axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-        axios.get("https://currate.ru/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de").then((response) => {
-          this.course = response.data;
-        });
+        axios
+          .get("https://currate.ru/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de", {
+            headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+          })
+          .then((response) => {
+            this.course = response.data;
+          });
       }
     },
     mathValue(rate, amount) {

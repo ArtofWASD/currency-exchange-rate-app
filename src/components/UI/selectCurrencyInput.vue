@@ -26,13 +26,15 @@ export default {
     };
   },
   mounted() {
-    axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
-    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-    axios.get("https://currate.ru/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de").then((response) => {
-      this.coursesPair = response.data.data.map((item) => {
-        return item.slice(0, 3);
+    axios
+      .get("https://currate.ru/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de", {
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+      })
+      .then((response) => {
+        this.coursesPair = response.data.data.map((item) => {
+          return item.slice(0, 3);
+        });
       });
-    });
   },
   methods: {
     returnValue(e) {
