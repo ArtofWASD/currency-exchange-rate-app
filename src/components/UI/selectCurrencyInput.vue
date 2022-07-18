@@ -1,12 +1,13 @@
 <template>
   <div id="v-model-select">
     <select v-model="selected" class="p-1 rounded" @change="returnValue">
-      <option value="КГИ">Выберите Валюту</option>
+      <option disabled value="">Выберите Валюту</option>
       <option v-for="item in convertArray">{{ item }}</option>
     </select>
   </div>
 </template>
 <script>
+import { ref } from "vue";
 import axios from "axios";
 export default {
   name: "select-input",
@@ -15,13 +16,19 @@ export default {
       type: String,
     },
   },
+  setup() {
+    const selected = ref(0);
+    return { selected };
+  },
   data() {
     return {
       coursesPair: [],
     };
   },
   mounted() {
-    axios.get("https://currate.ru/api/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de").then((response) => {
+    axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+    axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+    axios.get("/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de").then((response) => {
       this.coursesPair = response.data.data.map((item) => {
         return item.slice(0, 3);
       });

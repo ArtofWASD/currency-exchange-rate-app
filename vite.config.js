@@ -5,7 +5,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://currate.ru/api",
+        target: "https://currate.ru/",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
 

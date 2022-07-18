@@ -8,7 +8,7 @@
     </div>
     <div class="flex pt-8 gap-3 justify-center border-top" v-if="course !== undefined && input !== null">
       <p class="text-2xl text-white">Вы получите:</p>
-      <div class=" text-2xl text-white flex gap-2">
+      <div class="text-2xl text-white flex gap-2">
         <div>
           {{ mathValue(Number(Object.values(course.data)), input) }}
         </div>
@@ -44,7 +44,9 @@ export default {
   methods: {
     getCurrency() {
       if (this.currencyIn !== "" && this.currencyOut !== "") {
-        axios.get("https://currate.ru/api/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de").then((response) => {
+        axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+        axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+        axios.get("/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de").then((response) => {
           this.course = response.data;
         });
       }
