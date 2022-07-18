@@ -27,7 +27,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de", {
+      .get("https://currate.ru/api/?get=currency_list&key=a65e139fc72359d4597691114962a4de", {
         headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
       })
       .then((response) => {
