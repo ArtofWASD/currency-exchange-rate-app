@@ -1,5 +1,5 @@
 <template>
-  <div class="input_field border-2 rounded-xl py-16 px-28 grid justify-center">
+  <div class="input_field border-2 rounded-xl py-12 px-28 grid justify-center">
     <div class="grid lg:grid-cols-main sm:grid-cols-1 sm:justify-items-center justify-between items-center gap-2">
       <selectComponent title="Валюта 1" v-model="currencyIn" @change="getCurrency" />
       <switchButton @click="changeCurrencyPair"/>

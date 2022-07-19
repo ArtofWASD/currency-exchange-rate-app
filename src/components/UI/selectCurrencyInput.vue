@@ -11,7 +11,6 @@ import axios from "axios";
 export default {
   props: {
     modelValue:String,
-    value:String
   },
   data() {
     return {
@@ -31,7 +30,6 @@ export default {
   methods: {
     returnValue(e) {
       this.$emit("update:modelValue", e.target.value);
-      this.selected = e.target.value
     },
   },
 };
