@@ -1,24 +1,21 @@
 <template>
   <div id="v-model-select">
-    <select v-model="selected" class="p-1 rounded" @change="returnValue" :value="selected">
+    <select class="p-1 rounded" :value="modelValue" @input="returnValue">
       <option disabled value="">Выберите Валюту</option>
-      <option v-for="item in coursesPair">{{ item }}</option>
+      <option v-for="item in currency">{{ item }}</option>
     </select>
   </div>
 </template>
 <script>
 import axios from "axios";
 export default {
-  name: "select-input",
   props: {
-    modelValue: {
-      type: String,
-    },
+    modelValue:String,
+    value:String
   },
   data() {
     return {
-      coursesPair: [],
-      selected: "RUB",
+      currency: null,
     };
   },
   mounted() {
@@ -26,7 +23,7 @@ export default {
       const arr = response.data.data.map((item) => {
         return item.slice(0, 3);
       });
-      this.coursesPair = arr.filter((item, index) => {
+      this.currency = arr.filter((item, index) => {
         return arr.indexOf(item) === index;
       });
     });
@@ -34,6 +31,7 @@ export default {
   methods: {
     returnValue(e) {
       this.$emit("update:modelValue", e.target.value);
+      this.selected = e.target.value
     },
   },
 };

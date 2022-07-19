@@ -1,7 +1,7 @@
 <template lang="">
   <div class="flex flex-col justify-center items-center">
     <inputTitle :title="title" />
-    <selectInput @change="returnSelect"/>
+    <selectInput @input="returnSelect" :value="modelValue" />
   </div>
 </template>
 <script>
@@ -13,16 +13,13 @@ export default {
     selectInput,
   },
   props: {
-    title: {
-    },
-    modelValue: {
-      type: String,
-    },
+    title: String,
+    modelValue: String,
   },
   methods: {
-    returnSelect(e){
-        this.$emit("update:modelValue", e.target.value);
-    }
+    returnSelect(e) {
+      this.$emit("update:modelValue", e.target.value);
+    },
   },
 };
 </script>
