@@ -1,7 +1,7 @@
 <template>
   <div id="v-model-select">
     <myTitle :title="title" />
-    <select class="p-1 rounded" v-model="selected">
+    <select class="p-1 rounded text-sm" v-model="selected">
       <option disabled value="">Выберите Валюту</option>
       <option v-for="item in currency">{{ item }}</option>
     </select>
@@ -34,10 +34,15 @@ export default {
       });
     });
   },
-  methods: {
-    returnValue(e) {
-      this.$emit("update:modelValue", e.target.value);
+  computed:{
+    selected:{
+      get(){
+        return this.modelValue
+      },
+      set(value) {
+        this.$emit("update:modelValue", value)
+      }
     }
-  },
+  }
 };
 </script>

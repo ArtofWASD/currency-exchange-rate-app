@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center">
     <myTitle title="Укажите количество" />
-    <input type="text" :value="modelValue" @input="updateInput" class="rounded p-1" />
+    <input type="text" :value="modelValue" @input="updateInput" class="rounded p-1 text-sm" />
   </div>
 </template>
 <script>
