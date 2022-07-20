@@ -12,9 +12,6 @@
         <div>
           {{ mathValue(Number(Object.values(course.data)), input) }}
         </div>
-        <div>
-          {{ currencyOut }}
-        </div>
       </div>
     </div>
   </div>
@@ -51,12 +48,16 @@ export default {
     mathValue(rate, amount) {
       if (rate && amount) {
         const result = rate * amount;
-        return result.toFixed(2);
+        return result.toLocaleString('ru',{
+          style: 'currency',
+          currency: this.currencyOut,
+          currencyDisplay:'symbol'
+        });
       }
     },
     changeCurrencyPair() {
       const temp = this.currencyIn;
-      return (this.currencyIn = this.currencyOut), (this.currencyOut = temp);
+      return (this.currencyIn = this.currencyOut), (this.currencyOut = temp), (this.getCurrency())
     },
   },
 };

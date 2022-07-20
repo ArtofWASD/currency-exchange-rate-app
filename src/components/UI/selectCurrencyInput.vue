@@ -1,6 +1,6 @@
 <template>
   <div id="v-model-select">
-    <select class="p-1 rounded" :value="modelValue" @input="returnValue">
+    <select class="p-1 rounded" :value="modelValue" @input="returnValue" v-model="selected">
       <option disabled value="">Выберите Валюту</option>
       <option v-for="item in currency">{{ item }}</option>
     </select>
@@ -14,7 +14,8 @@ export default {
   },
   data() {
     return {
-      currency: null,
+      currency: "",
+      selected: "",
     };
   },
   mounted() {
