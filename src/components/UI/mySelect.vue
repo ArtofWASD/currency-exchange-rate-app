@@ -1,6 +1,7 @@
 <template>
   <div id="v-model-select">
-    <select class="p-1 rounded"  @input="returnValue" v-model="selected">
+    <myTitle :title="title" />
+    <select class="p-1 rounded" v-model="selected">
       <option disabled value="">Выберите Валюту</option>
       <option v-for="item in currency">{{ item }}</option>
     </select>
@@ -8,13 +9,18 @@
 </template>
 <script>
 import axios from "axios";
+import myTitle from "./myTitle.vue";
 export default {
+  components: {
+    myTitle
+  },
   props: {
     modelValue:String,
+    title:String
   },
   data() {
     return {
-      currency: "",
+      currency: null,
       selected: "",
     };
   },
@@ -31,10 +37,6 @@ export default {
   methods: {
     returnValue(e) {
       this.$emit("update:modelValue", e.target.value);
-      
-    },
-    change(e) {
-      this.selected = e.target.value;
     }
   },
 };

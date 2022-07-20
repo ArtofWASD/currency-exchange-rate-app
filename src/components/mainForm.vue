@@ -1,10 +1,10 @@
 <template>
-  <div class="input_field border-2 rounded-xl py-12 px-28 grid justify-center">
+  <div class="input_field border-2 rounded-xl pt-10 pb-16 px-28 grid justify-center">
     <div class="grid lg:grid-cols-main sm:grid-cols-1 sm:justify-items-center justify-between items-center gap-2">
-      <selectComponent title="Валюта 1" v-model="currencyIn" @change="getCurrency" />
+      <mySelect title="Валюта 1" v-model="currencyIn" @change="getCurrency"/>
       <switchButton @click="changeCurrencyPair"/>
-      <selectComponent title="Валюта 2" v-model="currencyOut" @change="getCurrency" />
-      <amountInput v-model="input" type="text" />
+      <mySelect title="Валюта 2" v-model="currencyOut" @change="getCurrency"/>
+      <myInput v-model="input" type="text" />
     </div>
     <div class="flex pt-8 gap-3 justify-center border-top" v-if="course !== undefined && input !== null">
       <p class="text-2xl text-white">Вы получите:</p>
@@ -17,17 +17,15 @@
   </div>
 </template>
 <script>
-import selectInput from "./UI/selectCurrencyInput.vue";
-import amountInput from "./UI/amountInput.vue";
+import myInput from "./UI/myInput.vue";
+import mySelect from "./UI/mySelect.vue";
 import switchButton from "./UI/switchButton.vue";
-import selectComponent from "../components/selectComponent.vue";
 import axios from "axios";
 export default {
   components: {
-    selectInput,
-    amountInput,
+    mySelect,
+    myInput,
     switchButton,
-    selectComponent,
   },
   data() {
     return {

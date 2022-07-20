@@ -1,14 +1,14 @@
 <template>
   <div class="flex flex-col justify-center items-center">
-    <inputTitle title="Укажите количество" />
+    <myTitle title="Укажите количество" />
     <input type="text" :value="modelValue" @input="updateInput" class="rounded p-1" />
   </div>
 </template>
 <script>
-import inputTitle from "./inputTitle.vue";
+import myTitle from "./myTitle.vue";
 export default {
   components: {
-    inputTitle,
+    myTitle,
   },
   props: {
     modelValue: Number,
