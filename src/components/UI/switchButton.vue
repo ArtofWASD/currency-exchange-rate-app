@@ -1,7 +1,7 @@
 <template>
   <div class="flex self-end">
   <button>
-    <img src="../../assets/arrows.png" alt="" class="w-10 h-10">
+    <img src="../../assets/arrows.png" alt="" class="w-7 h-7">
   </button>
   </div>
 

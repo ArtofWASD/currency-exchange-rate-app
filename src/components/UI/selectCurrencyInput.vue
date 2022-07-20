@@ -1,6 +1,6 @@
 <template>
   <div id="v-model-select">
-    <select class="p-1 rounded" :value="modelValue" @input="returnValue" v-model="selected">
+    <select class="p-1 rounded"  @input="returnValue" v-model="selected">
       <option disabled value="">Выберите Валюту</option>
       <option v-for="item in currency">{{ item }}</option>
     </select>
@@ -31,7 +31,11 @@ export default {
   methods: {
     returnValue(e) {
       this.$emit("update:modelValue", e.target.value);
+      
     },
+    change(e) {
+      this.selected = e.target.value;
+    }
   },
 };
 </script>
