@@ -10,6 +10,7 @@
 <script>
 import axios from "axios";
 import myTitle from "./myTitle.vue";
+import {codeTranscript} from '../../service/currencyCodeTranscript.js'
 export default {
   components: {
     myTitle
@@ -32,6 +33,7 @@ export default {
         return arr.indexOf(item) === index;
       });
     });
+    console.log(codeTranscript);
   },
   computed:{
     selected:{
