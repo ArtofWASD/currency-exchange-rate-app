@@ -1,13 +1,13 @@
 <template>
-  <div class="wrapper grid bg-gradient-to-r from-green-500 to-blue-500 min-h-screen">
-    <header>
-      <nav class="nav p-2 justify-end">
-        <navBar />
+  <div class="wrapper flex flex-col bg-gradient-to-r from-green-500 to-blue-500 min-h-screen dark:bg-black" :class="{ dark: darkMode }">
+    <header class="h-10">
+      <nav class="nav p-2 flex justify-end">
+        <myToggler @toggleDarkMode="onDarkMode"/>
       </nav>
     </header>
-    <main class="grid grid-flow-rows justify-center">
-      <h1 class="text-3xl text-center mt-40 text-white">Курс обмена валют</h1>
-      <div class="flex flex-col mt-10">
+    <main class="grid grid-flow-rows justify-center pt-40">
+      <h1 class="text-3xl text-center text-white py-10">Курс обмена валют</h1>
+      <div class="flex flex-col ">
         <mainForm />
       </div>
     </main>
@@ -15,11 +15,19 @@
 </template>
 <script>
 import mainForm from "./components/mainForm.vue";
-import navBar from "./components/navBar.vue";
+import myToggler from "./components/UI/myToggler.vue"
 export default {
   components: {
     mainForm,
-    navBar,
+    myToggler
   },
+  data:()=>({
+    darkMode:false
+  }),
+  methods: {
+    onDarkMode(){
+      this.darkMode =!this.darkMode
+    }
+  }
 };
 </script>
