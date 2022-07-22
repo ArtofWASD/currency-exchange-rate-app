@@ -10,7 +10,7 @@
         <myToggler @toggleDarkMode="onDarkMode" />
       </nav>
     </header>
-    <main class="grid grid-flow-rows justify-center pt-40">
+    <main class="grid grid-flow-rows justify-center lg:pt-40 xs:pt-10">
       <h1 class="text-3xl text-center text-white py-10">Курс обмена валют</h1>
       <div class="flex flex-col">
         <mainForm />
