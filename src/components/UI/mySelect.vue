@@ -35,7 +35,6 @@ export default {
           return arr.indexOf(item) === index;
         });
       });
-    console.log(codeTranscript);
   },
   computed: {
     selected: {
