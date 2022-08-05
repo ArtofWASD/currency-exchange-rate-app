@@ -13,16 +13,13 @@
       v-if="course !== undefined && input !== null">
       <p class="text-2xl text-white">Вы получите:</p>
       <div class="text-2xl text-white flex gap-2">
-<<<<<<< HEAD
         {{ mathValue(Number(Object.values(course.data)), input) }}
-=======
         <div>
           {{ mathValue(Number(Object.values(course.data)), input) }}
         </div>
         <div>
           {{ currencyOut }}
         </div>
->>>>>>> e3b564b8d628666304586a443206178380eece9f
       </div>
     </div>
     <!-- <div
@@ -61,19 +58,15 @@ export default {
   methods: {
     getCurrency() {
       if (this.currencyIn !== "" && this.currencyOut !== "") {
-        axios
-<<<<<<< HEAD
-          .get(
+        axios.get(
             "/api/?get=rates&pairs=" +
               this.currencyIn +
               this.currencyOut +
               "&key=a65e139fc72359d4597691114962a4de"
           )
-=======
           .get("https://currate.ru/api/?get=rates&pairs=" + this.currencyIn + this.currencyOut + "&key=a65e139fc72359d4597691114962a4de", {
             headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
           })
->>>>>>> e3b564b8d628666304586a443206178380eece9f
           .then((response) => {
             this.course = response.data;
           });
